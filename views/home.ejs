@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tweeter</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>Tweeter</h1>
+        <button><a href="http://localhost:8080/posts/new"> Create Post </a></button>
+    </header>
+    <main>
+        <% for(let post of posts){ %>
+            <div class="post">           
+                <h3>User:  <%= post.name %>(<span>@<%= post.username %></span>) 
+                    <button class="postb"><a href="http://localhost:8080/posts/<%=post.id %>/edit/">edit post</a></button>
+                    <button class="postb"><a href="http://localhost:8080/posts/<%=post.id %>/">view in details</a></button>
+                </h3><br>
+               
+                <p><%= post.content %></p>
+                <br>
+                
+               
+                <form method="post" action="http://localhost:8080/posts/<%=post.id%>?_method=DELETE">
+                    <button class="delete">Delete Post</button>
+                </form>
+
+                </div>
+                <br>
+            <%}%>
+
+            <br>
+            
+    </main>
+    <footer></footer>
+</body>
+</html>
